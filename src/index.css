@@ -60,7 +60,7 @@ nav a:hover {
 .container {
   width: 90%;
   margin: auto;
-  border:rgb(177, 174, 174) 1px solid;
+  border: #fff 1px solid;
   border-radius: 5px;
   margin-top: 20px;
 }
