@@ -1,48 +1,58 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { clickButton } from './actions';
+import React from 'react';
+import logo from './logo.svg';
+import { Counter } from './features/counter/Counter';
 import './App.css';
 
-class App extends Component {
-  state = {
-    inputValue: ''
-  }
-
-  inputChange = event => {
-    this.setState({
-      inputValue: event.target.value
-    })
-  }
-
-  render() {
-    const {
-      clickButton,
-      newValue
-    } = this.props;
-
-    return (
-      <div className="App" style={{ paddingTop: '10px' }}>
-        <input
-          onChange={this.inputChange}
-          type='text'
-          value={this.state.inputValue}
-        />
-        <button onClick={() => clickButton(this.state.inputValue)}>
-          Click me!
-        </button>
-        <h1>{newValue}</h1>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <Counter />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <span>
+          <span>Learn </span>
+          <a
+            className="App-link"
+            href="https://reactjs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React
+          </a>
+          <span>, </span>
+          <a
+            className="App-link"
+            href="https://redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux
+          </a>
+          <span>, </span>
+          <a
+            className="App-link"
+            href="https://redux-toolkit.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux Toolkit
+          </a>
+          ,<span> and </span>
+          <a
+            className="App-link"
+            href="https://react-redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React Redux
+          </a>
+        </span>
+      </header>
+    </div>
+  );
 }
 
-const mapStateToProps = store => ({
-  newValue: store.clickState.newValue
-});
-
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ clickButton }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
